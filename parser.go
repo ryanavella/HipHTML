@@ -1,3 +1,9 @@
+// Package hiphtml provides an interface for parsing arbitrary html.
+//
+// HipHTML is essentially a wrapper around html.Parse from golang.org/x/net/html that abstracts away some of the nitty gritty details.
+// The /x/net/html package recommends writing a recursive descent parser for simple tasks like locating the <body> element, but as your
+// requirements scale this very quickly leads to massive code duplication that is difficult to both navigate and maintain. Rather than
+// reinvent the wheel for each new task, you can use HipHTML to navigate an html tree with just a few intuitive method calls.
 package hiphtml
 
 import (

@@ -1,4 +1,4 @@
-# HipHTML: Simple HTML for Go
+# HipHTML [![](https://godoc.org/github.com/ryanavella/hiphtml?status.svg)](https://godoc.org/github.com/ryanavella/hiphtml)
 
 HipHTML is a wrapper around golang.org/x/net/html, providing a layer of abstraction that simplifies web scraping.
 
