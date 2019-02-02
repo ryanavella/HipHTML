@@ -110,18 +110,16 @@ func (p *Parser) nextSiblingAscending() (*html.Node, error) {
 	var err error
 	node := p.node
 	level := p.level
-	for {
+	for err == nil {
 		_, err = p.NextSibling()
 		if err == nil {
 			return p.node, nil
 		}
 		_, err = p.Parent()
-		if err != nil {
-			p.node = node
-			p.level = level
-			return nil, ErrNoSuchRelative
-		}
 	}
+	p.node = node
+	p.level = level
+	return nil, ErrNoSuchRelative
 }
 
 // prevSiblingDescending retreats the parser to the previous sibling, newphew, great nephew, etc. if it exists.
@@ -131,12 +129,10 @@ func (p *Parser) prevSiblingDescending() (*html.Node, error) {
 	if err != nil {
 		return nil, ErrNoSuchRelative
 	}
-	for {
+	for err == nil {
 		_, err = p.LastChild()
-		if err != nil {
-			return p.node, nil
-		}
 	}
+	return p.node, nil
 }
 
 // NextSibling advances the parser to the next sibling if it exists.
